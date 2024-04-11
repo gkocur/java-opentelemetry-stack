@@ -1,3 +1,11 @@
+# What's this?
+This repo contains the example how to automatically get signals from the JVM based application running on the kubernetes cluster using the opentelemetry operator. 
+The signals are routed to the Prometheus, Loki and Tempo. 
+
+You can just apply the final solution, but I encurage you to do it step-by-step by moving from first commit in this repo to the last. 
+Happy opentelemetring!
+
+
 # Prerequisites
 1. [Docker](https://www.docker.com) (to setup kind cluster). 
 1. [Kind](https://kind.sigs.k8s.io)
