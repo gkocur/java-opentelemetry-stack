@@ -56,3 +56,10 @@
     ```bash
     kubectl -n otel get pods -w
     ```
+
+# Add instrumentation
+1. Apply the instrumentation manifest
+    ```bash
+    kubectl apply -f opentelemetry/instrumentation.yaml
+    ```
+    
