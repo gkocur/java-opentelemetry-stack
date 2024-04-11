@@ -42,8 +42,17 @@
     ```
 
 # Install monitoring tools
-
 1. Install necessary tools on the cluster (kube-prometheus-stack, opentelemetry-operator, loki, tempo)
     ```bash
     ./install-tools.sh
+    ```
+    
+# Add opentelemetry collector
+1. Apply the collector manifest:
+    ```bash
+    kubectl apply -f opentelemetry/collector.yaml
+    ```
+1. Wait for the collector
+    ```bash
+    kubectl -n otel get pods -w
     ```
