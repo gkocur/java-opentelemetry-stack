@@ -21,6 +21,8 @@ spec:
     metadata:
       labels:
         app: dice
+      annotations:
+        instrumentation.opentelemetry.io/inject-java: "true"
     spec:
       containers:
       - image: dice:1.0

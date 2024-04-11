@@ -62,4 +62,11 @@
     ```bash
     kubectl apply -f opentelemetry/instrumentation.yaml
     ```
-    
+
+# Annotate the pods
+1. Add the annotation to the pod template
+1. Apply the deployment manifest:
+    ```bash
+    kubectl apply -f k8s/dice-deployment.yaml
+    kubectl apply -f k8s/users-deployment.yaml
+    ```
