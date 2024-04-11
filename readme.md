@@ -87,3 +87,21 @@
     ```
 1. Open http://localhost:9090 in browser, try to get metrics from `dice` service
 
+# Write logs to loki
+1. Edit collector to add the loki exporter, and add it to the pipeline
+1. To have additional lables in loki add the `resource` processor, and add it to the pipeline
+1. Apply modified collector 
+    ```bash
+    kubectl apply -f opentelemetry/collector.yaml
+    ```
+1. Apply the loki datasource
+    ```bash
+    kubeclt apply -f monitoring/loki-datasource.yaml
+    ```
+1. Forward the grafana port to the localhost:
+    ```bash
+    kubectl -n monitoring port-forward svc/kube-prometheus-stack-grafana 8880:80
+    ```
+1. Open the http://localhost:8880 in the browser, check if the datasource exists
+1. Explore the datasource and try to find logs from `dice` service.
+
