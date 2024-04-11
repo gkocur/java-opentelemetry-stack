@@ -27,13 +27,17 @@ spec:
         endpoint: http://kube-prometheus-stack-prometheus.monitoring:9090/api/v1/write
       loki:
         endpoint: http://loki-gateway.monitoring/loki/api/v1/push
+      otlp/tempo:
+        endpoint: tempo.monitoring:4317
+        tls:
+          insecure: true
       
     service:
       pipelines:
         traces:
           receivers: [otlp]
           processors: []
-          exporters: [debug]
+          exporters: [debug, otlp/tempo]
         metrics:
           receivers: [otlp]
           processors: []

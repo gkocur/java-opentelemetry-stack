@@ -105,3 +105,17 @@
 1. Open the http://localhost:8880 in the browser, check if the datasource exists
 1. Explore the datasource and try to find logs from `dice` service.
 
+# Write spans to tempo
+1. Edit the collector to add the tempo exporter. Tempo is compatible with the opentelemetry protocol, so there is no special exporter for tempo. Add this exporter to the pipeline.
+1. Apply modified collector 
+    ```bash
+    kubectl -f opentelemetry/collector.yaml
+    ```
+1. Apply the tempo datasource for the grafana:
+    ```bash
+    kubectl apply -f monitoring/tempo-datasource
+    ```
+1. Check if the datasource exists in grafana
+1. Try to explore this datasource, check the spans and go to logs related to it.
+
+THat's all folks. 

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tempo-datasource
+  namespace: monitoring
+  labels:
+    grafana_datasource: "1"
+data:
+  loki-stack-datasource.yaml: |-
+    apiVersion: 1
+    datasources:
+      - name: Tempo
+        type: tempo
+        url: http://tempo:3100
+        access: proxy
+        basicAuth: false
+        jsonData:
+          tracesToLogsV2:
+            # Field with an internal link pointing to a logs data source in Grafana.
+            # datasourceUid value must match the uid value of the logs data source.
+            datasourceUid: 'loki'
+            
+          
