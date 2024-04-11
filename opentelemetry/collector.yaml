@@ -18,6 +18,8 @@ spec:
     exporters:
       debug:
         verbosity: detailed
+      prometheusremotewrite:
+        endpoint: http://kube-prometheus-stack-prometheus.monitoring:9090/api/v1/write
       
     service:
       pipelines:
@@ -28,7 +30,7 @@ spec:
         metrics:
           receivers: [otlp]
           processors: []
-          exporters: [debug]
+          exporters: [debug, prometheusremotewrite]
         logs:
           receivers: [otlp]
           processors: []

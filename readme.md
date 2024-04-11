@@ -70,3 +70,20 @@
     kubectl apply -f k8s/dice-deployment.yaml
     kubectl apply -f k8s/users-deployment.yaml
     ```
+
+# Write metrics to prometheus
+1. Edit collector to add prometheus remote write exporter and add this exporter to the pipeline
+1. Apply changed collector
+    ```bash
+    kubectl apply -f opentelemetry/collector.yaml
+    ```
+1. Check if the collector pod was restarted
+    ```bash
+    kubectl -n otel get pods
+    ```
+1. Forward the prometheus port to the localhost:
+    ```bash
+    kubectl -n monitoring port-forward svc/kube-prometheus-stack-prometheus 9090
+    ```
+1. Open http://localhost:9090 in browser, try to get metrics from `dice` service
+
