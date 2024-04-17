@@ -40,4 +40,10 @@
     ```bash
     curl http://localhost:8080/rolldice
     ```
-    
+
+# Install monitoring tools
+
+1. Install necessary tools on the cluster (kube-prometheus-stack, opentelemetry-operator, loki, tempo)
+    ```bash
+    ./install-tools.sh
+    ```
